@@ -27,9 +27,9 @@ public class VersionCheck {
 
 		describeVersion(getVersionFromClassFile());
 
-		checkVersion(13);
+		checkVersion(14);
 
-		System.out.println(javVerCh.j13.FormattedOnString.formatStringOnInstance());
+		System.out.println(javVerCh.j14.SwitchExpressionSample.describeToday());
 
 	}
 
