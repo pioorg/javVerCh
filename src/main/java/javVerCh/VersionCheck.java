@@ -30,6 +30,7 @@ public class VersionCheck {
 		checkVersion(13);
 
 		System.out.println(javVerCh.j13.FormattedOnString.formatStringOnInstance());
+		System.out.println(javVerCh.j13.preview.TextBlockSample.sample);
 
 	}
 
