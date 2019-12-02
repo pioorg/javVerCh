@@ -1,5 +1,5 @@
 /*
- * 	Copyright (C) 2019 Piotr Przybył
+ * 	Copyright (C) 2019 - 2020 Piotr Przybył
  *
  * 	This program is free software: you can redistribute it and/or modify
  * 	it under the terms of the GNU General Public License as published by
@@ -17,9 +17,7 @@
 
 package javVerCh;
 
-import java.io.DataInputStream;
-
-import javVerCh.j12.TeeingCollectorFromJava12;
+import java.io.*;
 
 public class VersionCheck {
 	public static void main(String[] args) {
@@ -29,9 +27,10 @@ public class VersionCheck {
 
 		describeVersion(getVersionFromClassFile());
 
-		checkVersion(12);
+		checkVersion(13);
 
-		TeeingCollectorFromJava12.useTeeingCollector();
+		System.out.println(javVerCh.j13.FormattedOnString.formatStringOnInstance());
+
 	}
 
 	private static MajorAndMinor getVersionFromClassFile() {
