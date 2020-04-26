@@ -30,6 +30,7 @@ public class VersionCheck {
 		checkVersion(14);
 
 		System.out.println(javVerCh.j14.SwitchExpressionSample.describeToday());
+		javVerCh.j14.preview.RecordSample.printAndCompareRecords();
 
 	}
 
