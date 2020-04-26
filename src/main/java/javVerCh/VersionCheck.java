@@ -19,6 +19,7 @@ package javVerCh;
 
 import java.io.*;
 
+
 public class VersionCheck {
 	public static void main(String[] args) {
 
@@ -27,9 +28,9 @@ public class VersionCheck {
 
 		describeVersion(getVersionFromClassFile());
 
-		checkVersion(14);
+		checkVersion(15);
 
-		System.out.println(javVerCh.j14.SwitchExpressionSample.describeToday());
+		System.out.println(javVerCh.j15.TextBlockSample.sample);
 
 	}
 
