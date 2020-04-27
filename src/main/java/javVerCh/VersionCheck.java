@@ -31,6 +31,7 @@ public class VersionCheck {
 		checkVersion(15);
 
 		System.out.println(javVerCh.j15.TextBlockSample.sample);
+		javVerCh.j15.preview.RecordSample.printAndCompareRecords();
 
 	}
 
