@@ -17,7 +17,7 @@
 
 package javVerCh;
 
-import java.io.*;
+import java.io.DataInputStream;
 
 
 public class VersionCheck {
@@ -28,9 +28,7 @@ public class VersionCheck {
 
 		describeVersion(getVersionFromClassFile());
 
-		checkVersion(16);
-
-		javVerCh.j16.RecordSample.printAndCompareRecords();
+		checkVersion(17);
 
 	}
 
