@@ -28,9 +28,9 @@ public class VersionCheck {
 
 		describeVersion(getVersionFromClassFile());
 
-		checkVersion(15);
+		checkVersion(16);
 
-		System.out.println(javVerCh.j15.TextBlockSample.sample);
+		javVerCh.j16.RecordSample.printAndCompareRecords();
 
 	}
 
