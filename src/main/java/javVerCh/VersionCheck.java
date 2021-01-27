@@ -19,6 +19,8 @@ package javVerCh;
 
 import java.io.*;
 
+import javVerCh.j16.preview.Sealed;
+
 
 public class VersionCheck {
 	public static void main(String[] args) {
@@ -31,6 +33,7 @@ public class VersionCheck {
 		checkVersion(16);
 
 		javVerCh.j16.RecordSample.printAndCompareRecords();
+		Sealed.getPermitted().forEach(System.out::println);
 
 	}
 
