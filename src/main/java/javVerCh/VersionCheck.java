@@ -19,7 +19,7 @@ package javVerCh;
 
 import java.io.DataInputStream;
 
-import javVerCh.j10.LocalVariableInference;
+import javVerCh.j11.NewHttpClient;
 
 public class VersionCheck {
 	public static void main(String[] args) {
@@ -29,9 +29,9 @@ public class VersionCheck {
 
 		describeVersion(getVersionFromClassFile());
 
-		checkVersion(10);
+		checkVersion(11);
 
-		LocalVariableInference.varCheck();
+		NewHttpClient.showcase();
 	}
 
 	private static MajorAndMinor getVersionFromClassFile() {
