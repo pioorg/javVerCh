@@ -19,7 +19,7 @@ package javVerCh;
 
 import java.io.DataInputStream;
 
-import javVerCh.j9.InterfaceWithPrivateMethod;
+import javVerCh.j10.LocalVariableInference;
 
 public class VersionCheck {
 	public static void main(String[] args) {
@@ -29,9 +29,9 @@ public class VersionCheck {
 
 		describeVersion(getVersionFromClassFile());
 
-		checkVersion(9);
+		checkVersion(10);
 
-		InterfaceWithPrivateMethod.publicMethod();
+		LocalVariableInference.varCheck();
 	}
 
 	private static MajorAndMinor getVersionFromClassFile() {
@@ -88,7 +88,7 @@ public class VersionCheck {
 	}
 
 	private static int getRuntimeVersion() {
-		return Runtime.version().major();
+		return Runtime.version().feature();
 	}
 }
 
