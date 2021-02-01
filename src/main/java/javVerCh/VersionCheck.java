@@ -17,9 +17,9 @@
 
 package javVerCh;
 
-import java.io.*;
+import java.io.DataInputStream;
 
-import javVerCh.j8.StreamsAndLambdas;
+import javVerCh.j9.InterfaceWithPrivateMethod;
 
 public class VersionCheck {
 	public static void main(String[] args) {
@@ -29,10 +29,9 @@ public class VersionCheck {
 
 		describeVersion(getVersionFromClassFile());
 
-		checkVersion(8);
+		checkVersion(9);
 
-		StreamsAndLambdas.showStreamsAndLambdas();
-
+		InterfaceWithPrivateMethod.publicMethod();
 	}
 
 	private static MajorAndMinor getVersionFromClassFile() {
@@ -89,13 +88,7 @@ public class VersionCheck {
 	}
 
 	private static int getRuntimeVersion() {
-		String version = String.class.getPackage().getImplementationVersion();
-		if (version.startsWith("1.")) {
-			version = version.substring(2, 3);
-		} else {
-			version = version.substring(0, version.indexOf('.'));
-		}
-		return Integer.parseInt(version);
+		return Runtime.version().major();
 	}
 }
 
