@@ -19,7 +19,7 @@ package javVerCh;
 
 import java.io.DataInputStream;
 
-import javVerCh.j11.NewHttpClient;
+import javVerCh.j12.TeeingCollectorFromJava12;
 
 public class VersionCheck {
 	public static void main(String[] args) {
@@ -29,9 +29,9 @@ public class VersionCheck {
 
 		describeVersion(getVersionFromClassFile());
 
-		checkVersion(11);
+		checkVersion(12);
 
-		NewHttpClient.showcase();
+		TeeingCollectorFromJava12.useTeeingCollector();
 	}
 
 	private static MajorAndMinor getVersionFromClassFile() {
