@@ -17,6 +17,8 @@
 
 package javVerCh;
 
+import javVerCh.j17.preview.PatternMatching;
+
 import java.io.DataInputStream;
 
 
@@ -26,11 +28,12 @@ public class VersionCheck {
 		System.out.println("Looks like you can run this Java programme. That's cool!");
 		printVersion();
 
-        describeVersion(getVersionFromClassFile(VersionCheck.class));
+        describeVersion(getVersionFromClassFile(PatternMatching.class));
 
 		checkVersion(17);
 
 		javVerCh.j17.Sealed.getPermitted().forEach(System.out::println);
+		System.out.println(javVerCh.j17.preview.PatternMatching.switchOverClasses());
 
 	}
 
