@@ -1,5 +1,5 @@
 /*
- * 	Copyright (C) 2019 Piotr Przybył
+ * 	Copyright (C) 2021 Piotr Przybył
  *
  * 	This program is free software: you can redistribute it and/or modify
  * 	it under the terms of the GNU General Public License as published by
@@ -14,15 +14,16 @@
  * 	You should have received a copy of the GNU General Public License
  * 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+package javVerCh.j17;
 
-package javVerCh;
+import java.util.*;
+import java.util.stream.*;
 
-class MajorAndMinor {
-	final int major;
-	final int minor;
+public sealed interface Sealed permits SealedClassesWork {
+    static List<String> getPermitted() {
+        return Stream.of(Sealed.class.getPermittedSubclasses()).map(Class::getSimpleName).toList();
+    }
+}
 
-	MajorAndMinor(int major, int minor) {
-		this.major = major;
-		this.minor = minor;
-	}
+final class SealedClassesWork implements Sealed {
 }

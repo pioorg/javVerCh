@@ -26,17 +26,19 @@ public class VersionCheck {
 		System.out.println("Looks like you can run this Java programme. That's cool!");
 		printVersion();
 
-		describeVersion(getVersionFromClassFile());
+        describeVersion(getVersionFromClassFile(VersionCheck.class));
 
 		checkVersion(17);
 
+		javVerCh.j17.Sealed.getPermitted().forEach(System.out::println);
+
 	}
 
-	private static MajorAndMinor getVersionFromClassFile() {
+	private static MajorAndMinor getVersionFromClassFile(Class<?> klasse) {
 
-		ClassLoader classLoader = VersionCheck.class.getClassLoader();
-		String classFileName = VersionCheck.class.getName().replace(".", "/") + ".class";
-		try (DataInputStream stream = new DataInputStream(classLoader.getResourceAsStream(classFileName))) {
+        ClassLoader classLoader = klasse.getClassLoader();
+        String classFileName = klasse.getName().replace(".", "/") + ".class";
+        try (DataInputStream stream = new DataInputStream(classLoader.getResourceAsStream(classFileName))) {
 
 			//skipping CAFEBABE
 			stream.readInt();
@@ -45,7 +47,7 @@ public class VersionCheck {
 			//reading major
 			int major = stream.readUnsignedShort();
 
-			return new MajorAndMinor(major, minor);
+            return new MajorAndMinor(major, minor, klasse.getSimpleName());
 
 
 		} catch (Exception e) {
@@ -55,38 +57,48 @@ public class VersionCheck {
 
 	private static void describeVersion(MajorAndMinor version) {
 
-		System.out.printf("The version of this class file is %d.%d (compiled using Java %d), so it's %susing preview features.%n", version.major, version.minor, version.major - 44, version.minor == 65535 ? "" : "not ");
+        System.out.printf(
+            "The version of class file of %s class is %d.%d (compiled using Java %d), so it's %susing preview features.%n",
+            version.className(),
+            version.major(),
+            version.minor(),
+            version.major() - 44,
+            version.minor() == 65535 ? "" : "not "
+        );
 
 	}
 
-	private static void printVersion() {
-		try {
-			int runtimeVersion = getRuntimeVersion();
-			System.out.printf("The version of JVM is %s.%n", runtimeVersion);
+    private static void printVersion() {
+        try {
+            int runtimeVersion = getRuntimeVersion();
+            System.out.printf("The version of JVM is %s.%n", runtimeVersion);
 
-		} catch (Exception e) {
-			System.err.println("Ouch... Looks like your version is before 9... Please upgrade.");
-			e.printStackTrace();
-		}
+        } catch (Exception e) {
+            System.err.println("Ouch... Looks like your version is before 9... Please upgrade.");
+            e.printStackTrace();
+        }
 
 	}
 
 
-	private static void checkVersion(int versionRequired) {
-		int runtimeVersion = getRuntimeVersion();
-		if (runtimeVersion >= versionRequired) {
-			System.out.printf("Your JVM version %d is (above) the required one (%d). You're all set.%n",
-				runtimeVersion,
-				versionRequired);
-		} else {
-			System.out.printf("Your JVM version %d is not the required one (%d). Please upgrade your JVM. You " +
-				"can use http://sdkman.io/ and/or https://adoptopenjdk.net/%n", runtimeVersion, versionRequired);
-		}
+    private static void checkVersion(int versionRequired) {
+        int runtimeVersion = getRuntimeVersion();
+        if (runtimeVersion >= versionRequired) {
+            System.out.printf("Your JVM version %d is (above) the required one (%d). You're all set.%n",
+                runtimeVersion,
+                versionRequired);
+        } else {
+            System.out.printf("Your JVM version %d is not the required one (%d). Please upgrade your JVM. You " +
+                "can use http://sdkman.io/ and/or https://adoptium.net/%n", runtimeVersion, versionRequired);
+        }
 
 	}
 
 	private static int getRuntimeVersion() {
 		return Runtime.version().feature();
 	}
+}
+
+record MajorAndMinor(int major, int minor, String className) {
 }
 
